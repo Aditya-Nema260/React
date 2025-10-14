@@ -1,0 +1,48 @@
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container1 {
+  display: flex;
+  background-color: rgb(17, 17, 75);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}   
+
+button {
+  margin: 5px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  border-radius: 20px;
+  transition: transform 0.2s;
+}
+
+button:hover {
+  transform: scale(1.2);
+}
+
+
+input{
+    width: 60%;
+    padding: 8px;
+    border-radius: 20px;
+}
+
+
+.card{
+  height: 100px;
+  width: 80px;
+  background-color: rgb(32, 129, 129);
+  border: 1px solid black;
+}
