@@ -8,6 +8,8 @@ import Timer from "./Timer";
 import Card from "./Card";
 import Typewriter from "./Typewriter";
 import Notification from "./Notification";
+import RemoveElement from "./RemoveElement";
+import FormValidation from "./FormValidation";
 
 function App() {
   const [data, setData] = useState([]);
@@ -40,6 +42,8 @@ function App() {
 
   return (
     <div>
+      <FormValidation/>
+      <RemoveElement/>
       <Notification/>
       <Typewriter/>
       <Card></Card>

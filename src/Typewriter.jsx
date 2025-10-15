@@ -1,25 +1,46 @@
 import React, { useEffect, useState } from "react";
 
 const Typewriter = () => {
-  
   const [text, setText] = useState("");
   let str = "Welcome to DOM Practice!";
-  let i = 0;
 
-  
-  useEffect(() => {
-    const id = setInterval(() => {
-      console.log(text);
+  // useEffect(() => {
+  //   let index = 0;
+  //   let typeText = () => {
+  //     console.log("hello");
 
-      setText((prev) => prev + str[i]);
-      i++;
-      if (i >= str.length - 1) clearInterval(id);
-    }, 90);
-  }, []);
+  //     if (index < str.length - 1) {
+  //       setText((prev) => prev + str[index]);
+  //       index++;
+  //       setTimeout(typeText, 200);
+  //     }
+  //   };
+  //   typeText();
+  // }, []);
+
+  function handleWriter() {
+    // console.log();
+
+    let index = 0;
+    let id = setInterval(() => {
+      // console.log(text);
+      setText((prev) => {
+        console.log(prev, 'TYPE', index, str[index]);
+        // console.log("TYPE", index);
+        return prev + str[index++];
+      });
+      // index++;
+
+      if (index >= str.length - 1) {
+        clearInterval(id);
+      }
+    }, 200);
+  }
 
   return (
     <>
-      <div>Typewriter</div>
+      <div onClick={handleWriter}>Typewriter</div>
+
       <p>{text}</p>
     </>
   );

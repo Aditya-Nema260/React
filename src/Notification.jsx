@@ -6,6 +6,11 @@ const Notification = () => {
   const [text, setText] = useState("This is a notification");
   const [val , setVal] = useState(false)
 
+
+
+
+
+
   function handleClick(e) {
     setVal(true)
     setTimeout(() => {
@@ -14,6 +19,7 @@ const Notification = () => {
   }
   return (
     <>
+    <br />
       <button onClick={handleClick}>click</button>
       <div>{val ? text : ""}</div>
     </>
