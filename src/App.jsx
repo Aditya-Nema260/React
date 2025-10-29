@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import "./App.css";
 import Greeting from "./Greeting";
 import Button from "./Button";
@@ -10,123 +9,42 @@ import Typewriter from "./Typewriter";
 import Notification from "./Notification";
 import RemoveElement from "./RemoveElement";
 import FormValidation from "./FormValidation";
+import { Routes, Route } from "react-router";
+import Home from "./Home";
+import Navbar from "./Navbar";
+import CounterFetch from "./CounterFetch";
+import Card2 from "./NestedRoutes/Card2";
+import Card1 from "./NestedRoutes/Card1";
+import DynamicRoutes from "./DynamicRoutes/DynamicRoutes";
+
 
 function App() {
-  const [data, setData] = useState([]);
 
-  const [counter, setCounter] = useState(0);
 
-  useEffect(() => {
-  async function fetchData() {
-    let res = await fetch("https://jsonplaceholder.typicode.com/posts");
-    let jsonData = await res.json();
-    localStorage.setItem("postData", JSON.stringify(jsonData));
-    setData(jsonData);
-
-    console.log(jsonData);
-  }
-  fetchData();
-}, []);
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     let res = await fetch("https://jsonplaceholder.typicode.com/posts");
-  //     let jsonData = await res.json();
-  //     localStorage.setItem("postData", jsonData);
-  //     let data = localStorage.getItem("postData");
-  //     setData(jsonData);
-
-  //     console.log(data.keys);
-  //   }
-  //   fetchData();
-  // }, []);
-
+  
   return (
     <div>
-      <FormValidation/>
-      <RemoveElement/>
-      <Notification/>
-      <Typewriter/>
-      <Card></Card>
-      <Button />
-      <Feild />
-      {/* <Timer /> */}
-      <Effect />
-      <button
-        onClick={() => {
-          setCounter((prev) => prev + 1);
-          setCounter((prev) => prev + 1);
-          setCounter((prev) => prev + 1);
-          setCounter((prev) => prev + 1);
-          setCounter((prev) => prev + 1);
-        }}
-      >
-        +
-      </button>
-      <h3>{counter}</h3>
-      <button
-        onClick={() => {
-          setCounter(counter - 1);
-          setCounter(counter - 1);
-          setCounter(counter - 1);
-          setCounter(counter - 1);
-          setCounter(counter - 1);
-        }}
-      >
-        -
-      </button>
-      <button
-        onClick={() => {
-          setCounter(0);
-        }}
-      >
-        Reset
-      </button>
-      {data.map((obj) => (
-        <h3 key={obj.id}>{obj.title}</h3>
-      ))}
-      <Greeting name="Aladdin" age={15} />
-      <Greeting name="Jhoe" age={20} />
+      <Navbar />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/formValidation" element={<FormValidation />} />
+        <Route path="/removeElement" element={<RemoveElement />} />
+        <Route path="/notification" element={<Notification />} />
+        <Route path="/typewriter" element={<Typewriter />} />
+        <Route path="/card" element={<Card />}>
+          <Route path="card1" element={<Card1 />} />
+          <Route path="card2" element={<Card2 />} />
+        </Route>
+        <Route path="/button" element={<Button />} />
+        <Route path="/feild" element={<Feild />} />
+        <Route path="/effect" element={<Effect />} />
+        <Route path="/timer" element={<Timer />} />
+        <Route path="/counterFetch" element={<CounterFetch />} />
+        <Route path="/dynamicRoutes/:name/:age" element={<DynamicRoutes />} />
+      </Routes>
     </div>
   );
 }
 
 export default App;
-
-// import React from "react";
-// import "./App.css";
-// import Greeting from "./Greeting";
-// import Button from "./Button";
-
-// class App extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       data: [],
-//     };
-//   }
-
-//   componentDidMount() {
-//     fetch("https://jsonplaceholder.typicode.com/posts")
-//       .then((res) => res.json())
-//       .then((jsonData) => {
-//         this.setState({ data: jsonData });
-//       });
-//   }
-
-//   render() {
-//     return React.createElement(
-//       "div",
-//       null,
-//       React.createElement(Button, null),
-
-//       ...this.state.data.map((obj) =>
-//         React.createElement("h3", { key: obj.id }, obj.title)
-//       ),
-
-//       React.createElement(Greeting, { name: "AlicE", age: 15 }),
-//       React.createElement(Greeting, { name: "Bob", age: 20 })
-//     );
-//   }
-// }
-
-// export default App;
